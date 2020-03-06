@@ -52,7 +52,7 @@ export default {
   
   #search{
     padding:15px;
-    background:@aqua;;
+    background:@aqua;
     
     input{
       width:100%;
