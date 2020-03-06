@@ -1,6 +1,6 @@
 <template>
   <div class="home" v-if="locations">
-
+    
     <div class="half">
         <google-map/>
     </div>

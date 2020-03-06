@@ -1,12 +1,31 @@
 <template lang="html">
-    <div id="map">
-      
-    </div>
+    <div id="map"></div>
 </template>
 
 <script>
 export default {
-  name: 'google-map'
+  name: 'google-map',
+  computed: {
+    locations: function(){
+      return this.$store.state.locations
+    },
+    map: {
+      get: function(){
+        return this.$store.state.map
+      },
+      set: function(value){
+        this.$store.state.map = value;
+      }
+    },
+    markers: {
+      get: function(){
+        return this.$store.state.markers
+      },
+      set: function(value){
+        this.$store.state.markers[value.name] = value;
+      }
+    }
+  }
 }
 </script>
 
