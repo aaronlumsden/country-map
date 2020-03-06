@@ -1,5 +1,5 @@
 <template lang="html">
-    <div id="map"></div>
+    <div ref="map" id="map"></div>
 </template>
 
 <script>
@@ -9,6 +9,7 @@ export default {
     // Once the view has rendered run functions
     this.$nextTick(function(){
         this.initMap();
+        this.addMarkers();
     })
   },
   computed: {
@@ -41,6 +42,27 @@ export default {
            zoom: 4
       }); 
     
+    },
+    addMarkers: function(){
+      
+    var self = this;
+ 
+     // For each location create a new marker
+     this.locations.forEach(function(location){
+       
+           // Create a new marker and set the position for its location
+           // Add the marker to the markers array
+           self.markers = new window.google.maps.Marker({
+               position: {lat:location.latitude, lng:location.longitude},
+               name: location.name
+           });
+
+         
+           // Add marker to Map
+           self.markers[location.name].setMap(self.map);
+         
+      });
+       
     }
   }
 }
