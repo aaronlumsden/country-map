@@ -4,47 +4,23 @@
       <input type="text" placeholder="Search for country...">
     </form>
     <ul id="mapList" class="half">
-      <li>
-        <a class="searchItem" href="#">
-            <span class="name">United Kingdom</span>
-            <span class="capital">Capital: London</span>
-        </a>
-      </li>
-      
-      <li>
-        <a class="searchItem" href="#">
-            <span class="name">United Kingdom</span>
-            <span class="capital">Capital: London</span>
-        </a>
-      </li>
-      
-      <li>
-        <a class="searchItem" href="#">
-            <span class="name">United Kingdom</span>
-            <span class="capital">Capital: London</span>
-        </a>
-      </li>
-      
-      <li>
-        <a class="searchItem" href="#">
-            <span class="name">United Kingdom</span>
-            <span class="capital">Capital: London</span>
-        </a>
-      </li>
-      
-      <li>
-        <a class="searchItem" href="#">
-            <span class="name">United Kingdom</span>
-            <span class="capital">Capital: London</span>
-        </a>
+      <li v-for="location in locations" :key="location.name">
+          <search-list-item :location="location" />
       </li>
     </ul>
   </div>
 </template>
 
 <script>
+import searchListItem from '@/components/search-list-item'
 export default {
-  name: 'search-list'
+  name: 'search-list',
+  components: {searchListItem},
+  computed: {
+    locations: function(){
+      return this.$store.state.locations;
+    }
+  }
 }
 </script>
 
