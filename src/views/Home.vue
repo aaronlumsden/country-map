@@ -1,6 +1,6 @@
 <template>
-  <div class="home">
-        
+  <div class="home" v-if="locations">
+
     <div class="half">
         <google-map/>
     </div>
@@ -18,6 +18,14 @@ import GoogleMap from '@/components/google-map.vue'
 export default {
   name: 'Home',
   components: {SearchList, GoogleMap},
+  mounted: function(){
+    this.$store.dispatch('getLocations');   
+  },
+  computed: {
+    locations: function(){
+      return this.$store.state.locations
+    }
+  }
 }
 </script>
 
