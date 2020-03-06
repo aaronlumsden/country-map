@@ -5,6 +5,12 @@
 <script>
 export default {
   name: 'google-map',
+  mounted: function(){
+    // Once the view has rendered run functions
+    this.$nextTick(function(){
+        this.initMap();
+    })
+  },
   computed: {
     locations: function(){
       return this.$store.state.locations
@@ -25,6 +31,17 @@ export default {
         this.$store.state.markers[value.name] = value;
       }
     }
+  },
+  methods: {
+    initMap: function(){
+      
+      // Set up the  map
+      this.map = new window.google.maps.Map(document.getElementById('map'), {
+           center: {lat: 49.217596, lng: 19.643555},
+           zoom: 4
+      }); 
+    
+    }
   }
 }
 </script>
@@ -33,7 +50,6 @@ export default {
 #map{
   width: 100%; 
   height:100vh;
-  background:red;
   
   @media(max-width:@mob){
     height:300px;
