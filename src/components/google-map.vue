@@ -5,7 +5,7 @@
 <script>
 export default {
   name: 'google-map',
-  mounted: function(){
+  created: function(){
     // Once the view has rendered run functions
     this.$nextTick(function(){
         this.initMap();
@@ -47,7 +47,7 @@ export default {
       
     var self = this;
  
-     // For each location create a new marker
+     // For each location create a new marker  & infoWindow pop up
      this.locations.forEach(function(location){
        
            // Create a new marker and set the position for its location
@@ -55,6 +55,24 @@ export default {
            self.markers = new window.google.maps.Marker({
                position: {lat:location.latitude, lng:location.longitude},
                name: location.name
+           });
+           
+           // Create new infoWindow with the location name
+           var infoWindow = new window.google.maps.InfoWindow({
+             content: location.name
+           });
+         
+           // Add click event to the marker and on click do the following:
+           // Close the active info window
+           // pan to the selected location
+           // Open the info window
+           // set the active info window
+           
+           self.markers[location.name].addListener('click', function() {
+             if (self.activeInfoWindow) { self.activeInfoWindow.close();}
+             self.map.panTo({lat:location.latitude, lng:location.longitude});
+             infoWindow.open(self.map, self.markers[location.name]);
+             self.activeInfoWindow = infoWindow;
            });
 
          
