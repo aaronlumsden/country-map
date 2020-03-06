@@ -5,6 +5,12 @@
 </template>
 
 <style lang="less">
+*{
+  box-sizing:border-box;
+}
+html,body{
+  background:#f4f6fc;
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -12,5 +18,4 @@
   text-align: center;
   color: #2c3e50;
 }
-
 </style>
