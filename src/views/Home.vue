@@ -6,15 +6,17 @@
     </div>
     
     <div class="half">
-       ...
+       <search-list />
     </div>
         
   </div>
 </template>
 
 <script>
+import SearchList from '@/components/search-list.vue'
 export default {
-  name: 'Home'
+  name: 'Home',
+  components: {SearchList},
 }
 </script>
 
@@ -29,14 +31,6 @@ export default {
   .half{
     flex:1;
     width:50%;
-    
-    &:first-child{
-      background:red;
-    }
-    
-    &:last-child{
-      background:blue;
-    }
     
     @media(max-width:@mob){
       width:100%;
