@@ -2,7 +2,7 @@
   <div class="home">
         
     <div class="half">
-        ...
+        <google-map/>
     </div>
     
     <div class="half">
@@ -14,9 +14,10 @@
 
 <script>
 import SearchList from '@/components/search-list.vue'
+import GoogleMap from '@/components/google-map.vue'
 export default {
   name: 'Home',
-  components: {SearchList},
+  components: {SearchList, GoogleMap},
 }
 </script>
 
