@@ -1,11 +1,16 @@
 <template lang="html">
   <div id="searchList">
     <form id="search">
-      <input type="text" placeholder="Search for country...">
+      <input type="text" placeholder="Search for country..." v-model="searchTerm">
     </form>
     <ul id="mapList" class="half">
-      <li v-for="location in locations" :key="location.name">
+      <li v-for="location in searchResults" :key="location.name">
           <search-list-item :location="location" />
+      </li>
+      <li v-if="searchResults.length == 0">
+        <span class="searchItem">
+          No countries match your search results
+        </span>
       </li>
     </ul>
   </div>
@@ -19,6 +24,22 @@ export default {
   computed: {
     locations: function(){
       return this.$store.state.locations;
+    },
+    searchTerm: {
+      get: function(){
+        return this.$store.state.searchTerm;
+      },
+      set: function(value){
+         this.$store.state.searchTerm = value;
+      }
+    },
+    searchResults: function(){
+      // Filter locations for search results
+      var self = this;
+      return this.locations.filter(function(item){
+          return item.name.toLowerCase().indexOf(self.searchTerm.toLowerCase()) > - 1;
+      })
+      
     }
   }
 }
