@@ -45,7 +45,7 @@ export default {
 }
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 
 #searchList{
   width:100%;
