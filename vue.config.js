@@ -16,7 +16,7 @@ module.exports = {
       less: {
         globalVars: {
           aqua: "#00d1d5",
-          orange: "f9ba5d",
+          orange: "#f9ba5d",
           mob: "800px"
         }
       }
